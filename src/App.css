@@ -1,38 +1,101 @@
-.App {
+:root {
+  --main-border-color: rgb(10, 7, 7);
+  --main-color: rgb(228, 231, 235);
+}
+
+html {
+  margin: 0;
+  background-color: rgb(110, 115, 119);
+}
+
+.timer {
+  display: flex;
+  margin: 40px auto;
+  border: solid var(--main-border-color);
+  border-radius: 40px;
+  width: 200px;
+  color: rgb(228, 231, 235);
+  font-size: 40px;
+  padding: 10px;
+}
+.timer > * {
+  margin: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  margin: auto;
+}
+#start {
+  background-color: rgb(173, 26, 26);
+  border: solid var(--main-border-color);
+  border-radius: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#reset {
+  background-color: rgb(173, 26, 26);
+  border: solid var(--main-border-color);
+  border-radius: 20px;
+  text-align: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.buttons > * {
+  margin: auto 10px 20px;
+  padding: 8px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.change {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 200px;
+  margin: auto;
+}
+.change > * {
+  margin: auto 4px 2px;
+  padding: 4px;
+  font-size: 18px;
+}
+.study {
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  color: rgb(228, 231, 235);
+}
+#incrementTime {
+  border: 2px solid var(--main-border-color);
+  border-radius: 20px;
+  color: rgb(228, 231, 235);
+}
+
+#decrementTime {
+  border: 2px solid var(--main-border-color);
+  border-radius: 20px;
+  color: rgb(228, 231, 235);
+}
+
+#incrementBreak {
+  border: 2px solid var(--main-border-color);
+  border-radius: 20px;
+  color: rgb(228, 231, 235);
+}
+
+#decrementBreak {
+  border: 2px solid var(--main-border-color);
+  border-radius: 20px;
+  color: rgb(228, 231, 235);
+}
+.Title {
+  text-align: center;
+  padding: 2px 0px 2px 0px;
+  margin-top: 20px;
+  background-color: rgb(54, 47, 46);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Footer {
+  text-align: center;
+  padding: 2px 0px 2px 0px;
+  margin-top: 20px;
+  background-color: rgb(54, 47, 46);
+  color: white;
 }
