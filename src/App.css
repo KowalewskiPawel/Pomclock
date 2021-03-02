@@ -41,6 +41,22 @@ html {
   border-radius: 20px;
   text-align: center;
 }
+#toogleSession {
+  background-color: rgb(53, 53, 53);
+  border: solid var(--main-border-color);
+  border-radius: 20px;
+  text-align: center;
+  color: rgb(228, 231, 235);
+}
+#noise {
+  background-color: rgb(53, 53, 53);
+  border: solid var(--main-border-color);
+  border-radius: 20px;
+  text-align: center;
+  color: rgb(228, 231, 235);
+  width: 10%;
+  margin: 10px 10px 10px auto;
+}
 .buttons > * {
   margin: auto 10px 20px;
   padding: 8px;
@@ -98,4 +114,20 @@ html {
   margin-top: 20px;
   background-color: rgb(54, 47, 46);
   color: white;
+}
+.settings > * {
+  background-color: rgb(53, 53, 53);
+  border: solid var(--main-border-color);
+  border-radius: 20px;
+  text-align: center;
+  color: rgb(228, 231, 235);
+  margin-top: 10px;
+  margin-right: auto;
+  width: 10%;
+  height: 10%;
+  align-items: center;
+  padding: 2px;
+}
+.settings {
+  display: flex;
 }
