@@ -1,9 +1,14 @@
 import React from "react";
 import Bell from "./ring.mp3";
+import White from "./noise.ogg";
+import ModalRules from "./ModalRules";
+import moment from "moment";
 
 export default class Clock extends React.Component {
   constructor(props) {
     super(props);
+
+    const dateCreate = moment().format("MMM Do YY");
     this.state = {
       isToggleOn: true,
       time: 60 * 25,
@@ -11,61 +16,65 @@ export default class Clock extends React.Component {
       isBreak: false,
       timeLength: 25,
       breakLength: 10,
+      whiteNoise: false,
+      sessions: [],
+      date: dateCreate,
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.handleIncrementTime = this.handleIncrementTime.bind(this);
-    this.handleDecrementTime = this.handleDecrementTime.bind(this);
-    this.handleIncrementBreak = this.handleIncrementBreak.bind(this);
-    this.handleDecrementBreak = this.handleDecrementBreak.bind(this);
+    this.audioRef = React.createRef();
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState((state) => ({
       isToggleOn: !state.isToggleOn,
     }));
     this.startTimer();
-  }
+  };
 
-  handleReset() {
+  handleReset = () => {
     this.resetTimer();
     this.resetBreak();
-  }
+  };
 
-  handleIncrementTime() {
-    this.setState((prevState) => ({
-      time: prevState.time + 60,
-      timeLength: prevState.timeLength + 1,
-    }));
-  }
+  handleIncrementTime = () => {
+    if (this.state.time < 30 * 60) {
+      this.setState((prevState) => ({
+        time: prevState.time + 60,
+        timeLength: prevState.timeLength + 1,
+      }));
+    }
+  };
 
-  handleDecrementTime() {
-    if (this.state.time > 60) {
+  handleDecrementTime = () => {
+    if (this.state.time > 15 * 60) {
       this.setState((prevState) => ({
         time: prevState.time - 60,
         timeLength: prevState.timeLength - 1,
       }));
     }
-  }
+  };
 
-  handleIncrementBreak() {
-    this.setState((prevState) => ({
-      break: prevState.break + 60,
-      breakLength: prevState.breakLength + 1,
-    }));
-  }
+  handleIncrementBreak = () => {
+    if (this.state.break < 30) {
+      this.setState((prevState) => ({
+        break: prevState.break + 60,
+        breakLength: prevState.breakLength + 1,
+      }));
+    }
+  };
 
-  handleDecrementBreak() {
+  handleDecrementBreak = () => {
     if (this.state.break > 60) {
       this.setState((prevState) => ({
         break: prevState.break - 60,
         breakLength: prevState.breakLength - 1,
       }));
     }
-  }
+  };
 
-  startTimer() {
+  startTimer = () => {
     const bell = new Audio(Bell);
+    const timeLast = this.state.timeLength;
+    const breakLast = this.state.breakLength;
     if (this.state.time > 0 && !this.state.isBreak) {
       if (this.state.isToggleOn) {
         this.counter = setInterval(() => {
@@ -79,7 +88,9 @@ export default class Clock extends React.Component {
               isBreak: !state.isBreak,
             }));
             clearInterval(this.counter);
-            this.resetTimer();
+            this.setState({
+              time: timeLast * 60,
+            });
           }
         }, 1000);
       } else {
@@ -98,28 +109,74 @@ export default class Clock extends React.Component {
               isToggleOn: !state.isToggleOn,
               isBreak: !state.isBreak,
             }));
+            this.setState(
+              (prevState) => ({
+                sessions: prevState.sessions.push("🍅"),
+              }),
+              () => {
+                localStorage.setItem(
+                  "sessions",
+                  JSON.stringify(this.state.sessions)
+                );
+              }
+            );
+            this.saveLocal();
             clearInterval(this.counter2);
-            this.resetBreak();
+            this.setState({
+              break: breakLast * 60,
+            });
           }
         }, 1000);
       } else {
         clearInterval(this.counter2);
       }
     }
-  }
+  };
 
-  resetTimer() {
+  resetTimer = () => {
     this.setState({
       time: 60 * 25,
       timeLength: 25,
     });
-  }
+  };
 
-  resetBreak() {
+  resetBreak = () => {
     this.setState({
       break: 60 * 10,
       breakLength: 10,
     });
+  };
+
+  playWhiteNoise = () => {
+    if (!this.state.whiteNoise) {
+      this.setState({
+        whiteNoise: true,
+      });
+      this.audioRef.current.addEventListener("ended", () => {
+        this.audioRef.current.play();
+      });
+      this.audioRef.current.play();
+    }
+    if (this.state.whiteNoise) {
+      this.audioRef.current.pause();
+      this.setState({
+        whiteNoise: false,
+      });
+    }
+  };
+
+  saveLocal = () => {
+    localStorage.setItem("pomoDay", JSON.stringify(this.state.date));
+  };
+
+  componentDidMount() {
+    const sessions = localStorage.getItem("sessions");
+    const dateDay = localStorage.getItem("pomoDay");
+    if (sessions) {
+      if (JSON.parse(dateDay) === this.state.date) {
+        this.setState({ sessions: JSON.parse(sessions) });
+      }
+    }
   }
 
   render() {
@@ -145,6 +202,21 @@ export default class Clock extends React.Component {
           <div id="start" onClick={this.handleClick}>
             {this.state.isToggleOn ? "START" : "STOP"}
           </div>
+          <div
+            id="toogleSession"
+            onClick={() => {
+              this.setState({
+                isBreak: !this.state.isBreak,
+                isToggleOn: true,
+                time: this.state.timeLength * 60,
+                break: this.state.breakLength * 60,
+              });
+              clearInterval(this.counter);
+              clearInterval(this.counter2);
+            }}
+          >
+            {!this.state.isBreak ? "Break Time" : "Study Time"}
+          </div>
           <div id="reset" onClick={this.handleReset}>
             RESET
           </div>
@@ -166,6 +238,17 @@ export default class Clock extends React.Component {
           <div id="decrementBreak" onClick={this.handleDecrementBreak}>
             -
           </div>
+        </div>
+        <div className="settings">
+          <div id="noise" onClick={this.playWhiteNoise}>
+            <audio ref={this.audioRef} src={White} />
+            {!this.state.whiteNoise ? " 🔉 White Noise" : "🔇 White Noise"}
+          </div>
+          <ModalRules />
+        </div>
+        <div id="achievements">
+          <h2>Today you have finished {this.state.sessions.length} sessions</h2>
+          <p>{this.state.sessions.join(" ")}</p>
         </div>
       </div>
     );
