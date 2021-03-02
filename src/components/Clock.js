@@ -248,7 +248,7 @@ export default class Clock extends React.Component {
         </div>
         <div id="achievements">
           <h2>Today you have finished {this.state.sessions.length} sessions</h2>
-          <p>{this.state.sessions.join(" ")}</p>
+          <p id="pomodoros">{this.state.sessions.join(" ")}</p>
         </div>
       </div>
     );

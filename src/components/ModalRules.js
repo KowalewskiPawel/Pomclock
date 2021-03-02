@@ -42,7 +42,7 @@ export default function ModalRules() {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <h2>PomoClock</h2>
+        <h2>🍅 Minidoro Clock</h2>
         <div
           style={{
             position: "absolute",
@@ -61,12 +61,29 @@ export default function ModalRules() {
           X
         </div>
         <div>
-          The Pomodoro Technique is a time management method developed by
-          Francesco Cirillo in the late 1980s.[1] The technique uses a timer to
-          break down work into intervals, traditionally 25 minutes in length,
-          separated by short breaks. Each interval is known as a pomodoro, from
-          the Italian word for 'tomato', after the tomato-shaped kitchen timer
-          that Cirillo used as a university student.
+          Minidoro Clock - is a minimalistic timer tool inspired by the Pomodoro
+          Technique invented by Francesco Cirillo. This tool's main aim is to
+          help us organize our study schedule and divide sessions into short
+          intervals called pomodoros (tomatoes), traditionally 25 minutes long.
+          <br />
+          In general our attention span lasts for about 20 minutes, so keeping
+          each of our the session between 15 to 30 minutes should give us
+          possibly the best results. After each session, it is good to have a
+          short break (generally 5 to 15 minutes long), and then go back to work
+          for another session.
+          <br />
+          <ul>
+            <li>For each accomplished session, you will get one pomodoro 🍅</li>
+            <li>You can change study time and break time </li>
+            <li>
+              There is a White Noise option available for focusing even better
+            </li>
+
+            <li>Your pomodoros are reset daily </li>
+            <li>Collect as many as you can</li>
+          </ul>
+          <br />
+          Good luck!
         </div>
       </Modal>
     </>

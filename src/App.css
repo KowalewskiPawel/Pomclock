@@ -102,17 +102,26 @@ html {
   color: rgb(228, 231, 235);
 }
 .Title {
+  display: flex;
+  align-items: center;
   text-align: center;
   padding: 2px 0px 2px 0px;
-  margin-top: 20px;
-  background-color: rgb(54, 47, 46);
-  color: white;
+  background-color: rgb(34, 32, 32);
+  color: rgb(228, 231, 235);
+}
+.Title > img {
+  margin-left: auto;
+  width: 60px;
+  height: auto;
+}
+.Title > h1 {
+  margin-right: auto;
 }
 .Footer {
   text-align: center;
   padding: 2px 0px 2px 0px;
   margin-top: 20px;
-  background-color: rgb(54, 47, 46);
+  background-color: rgb(34, 32, 32);
   color: white;
 }
 .settings > * {
@@ -130,4 +139,21 @@ html {
 }
 .settings {
   display: flex;
+}
+#achievements {
+  width: 200px;
+  margin: 10px auto;
+  border: solid black 2px;
+  border-radius: 20px;
+  background-color: rgb(65, 64, 62);
+  color: rgb(228, 231, 235);
+  padding: 10px;
+}
+#pomodoros {
+  width: 90%;
+  height: 20%;
+  margin: auto;
+  padding: 6px;
+  border: solid black 2px;
+  border-radius: 20px;
 }
