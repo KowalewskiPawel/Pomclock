@@ -73,7 +73,7 @@ html {
   font-size: 18px;
 }
 .study {
-  width: 400px;
+  width: auto;
   margin: 50px auto;
   text-align: center;
   color: rgb(228, 231, 235);
