@@ -235,6 +235,9 @@ html {
     font-size: 12px;
     height: 34px;
     margin-top: 8px;
+  }  
+  #try {
+    height: 34px;
   }
   #badge {
     width: 90%;
