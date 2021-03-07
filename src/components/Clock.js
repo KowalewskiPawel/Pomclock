@@ -91,6 +91,18 @@ export default class Clock extends React.Component {
             this.setState({
               time: timeLast * 60,
             });
+            this.setState(
+              (prevState) => ({
+                sessions: [...prevState.sessions, "🍅"],
+              }),
+              () => {
+                localStorage.setItem(
+                  "sessions",
+                  JSON.stringify(this.state.sessions)
+                );
+              }
+            );
+            this.saveLocal();
           }
         }, 1000);
       } else {
@@ -109,17 +121,6 @@ export default class Clock extends React.Component {
               isToggleOn: !state.isToggleOn,
               isBreak: !state.isBreak,
             }));
-            this.setState(
-              (prevState) => ({
-                sessions: prevState.sessions.push("🍅"),
-              }),
-              () => {
-                localStorage.setItem(
-                  "sessions",
-                  JSON.stringify(this.state.sessions)
-                );
-              }
-            );
             this.saveLocal();
             clearInterval(this.counter2);
             this.setState({
@@ -247,7 +248,15 @@ export default class Clock extends React.Component {
           <ModalRules />
         </div>
         <div id="achievements">
-          <h2>Today you have finished {this.state.sessions.length} sessions</h2>
+          <h2>
+            {this.state.sessions.length === 0
+              ? "Today you haven't finished any session yet"
+              : this.state.sessions.length === 1
+              ? "Today you have finished 1 session"
+              : "Today you have finished " +
+                this.state.sessions.length +
+                " sessions"}
+          </h2>
           <p id="pomodoros">{this.state.sessions.join(" ")}</p>
         </div>
       </div>

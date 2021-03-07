@@ -7,12 +7,13 @@ const customStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "50%",
     color: "rgb(15, 15, 15)",
-    padding: "3rem",
+    padding: "1rem",
     borderRadius: "5px",
     boxShadow: "0 3rem 5rem rgba(0, 0, 0, 0.3)",
     textAlign: "center",
+    maxHeight: "60vh !important",
+    maxWidth: "80%",
   },
 };
 
@@ -67,13 +68,13 @@ export default function ModalRules() {
           intervals called pomodoros (tomatoes), traditionally 25 minutes long.
           <br />
           In general our attention span lasts for about 20 minutes, so keeping
-          each of our the session between 15 to 30 minutes should give us
+          each of our the sessions between 15 to 30 minutes should give us
           possibly the best results. After each session, it is good to have a
           short break (generally 5 to 15 minutes long), and then go back to work
           for another session.
           <br />
           <ul>
-            <li>For each accomplished session, you will get one pomodoro 🍅</li>
+            <li>For each accomplished session, you get one pomodoro 🍅</li>
             <li>You can change study time and break time </li>
             <li>
               There is a White Noise option available for focusing even better
