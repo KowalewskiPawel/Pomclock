@@ -3,6 +3,7 @@ import Bell from "./ring.mp3";
 import White from "./noise.ogg";
 import ModalRules from "./ModalRules";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 export default class Clock extends React.Component {
   constructor(props) {
@@ -181,8 +182,20 @@ export default class Clock extends React.Component {
   }
 
   render() {
+    const studyTime = !this.state.isBreak
+      ? `${Math.floor(this.state.time / 60)} : ${String(
+          Math.floor(this.state.time % 60)
+        ).padStart(2, "0")}`
+      : `${Math.floor(this.state.break / 60)} : ${String(
+          Math.floor(this.state.break % 60)
+        ).padStart(2, "0")}`;
     return (
       <div>
+        <Helmet>
+          <title>
+            Minidoro Clock {!this.state.isToggleOn ? studyTime : ""}
+          </title>
+        </Helmet>
         <h1 className="study">
           {!this.state.isBreak ? "It's study time" : "It's break time"}
         </h1>
