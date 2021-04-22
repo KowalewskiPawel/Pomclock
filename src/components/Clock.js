@@ -8,7 +8,6 @@ import { Helmet } from "react-helmet";
 export default class Clock extends React.Component {
   constructor(props) {
     super(props);
-
     const dateCreate = moment().format("MMM Do YY");
     this.state = {
       isToggleOn: true,
