@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logopo.png";
 import googlebadge from "./googleplaybadge.png";
+import tryItButton from "./tryIt.png";
 
 export default class Intro extends React.Component {
   render() {
@@ -22,14 +23,11 @@ export default class Intro extends React.Component {
                 });
               }}
             >
-              <p
-                style={{
-                  marginTop: "8px",
-                  marginBottom: "auto",
-                }}
-              >
-                TRY IT ONLINE
-              </p>
+              <img
+                id="badge"
+                src={tryItButton}
+                alt="Try it online"
+              />
             </div>
             <p style={{ fontWeight: "600", color: "rgb(228, 231, 235)" }}>OR</p>
             <a
