@@ -16,7 +16,7 @@ export default class Intro extends React.Component {
             <a
               onClick={() => {
                 window.scrollTo({
-                  top: 700,
+                  top: window.innerHeight,
                   left: 0,
                   behavior: "smooth",
                 });
