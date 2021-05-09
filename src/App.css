@@ -218,7 +218,7 @@ html {
 #or  {
   font-size: 2rem;
   position: relative;
-  left: -2rem;
+  left: -3rem;
 }
 @media only screen and (max-width: 800px) {
   .intro {
@@ -259,6 +259,6 @@ html {
   }
   #or {
     margin-left: 4rem;
-    font-size: inherit;
+    font-size: 1rem;
   }
 }
