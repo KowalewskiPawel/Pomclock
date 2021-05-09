@@ -13,23 +13,12 @@ export default class Intro extends React.Component {
           </h1>
           <p>minimalism + pomodoroTechnique = productivity</p>
           <div id="introbtns">
-            /*<div
-              id="try"
-              onClick={() => {
-                window.scrollTo({
-                  top: 700,
-                  left: 0,
-                  behavior: "smooth",
-                });
-              }}
-            >
-            */
+
               <img
                 id="badge"
                 src={tryItButton}
                 alt="Try it online"
               />
-            //</div>
             <p style={{ fontWeight: "600", color: "rgb(228, 231, 235)" }}>OR</p>
             <a
               href="https://play.google.com/store/apps/details?id=com.practicalearning.minidoroclock"
