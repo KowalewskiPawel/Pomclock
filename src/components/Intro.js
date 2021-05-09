@@ -28,7 +28,7 @@ export default class Intro extends React.Component {
                 alt="Try it online"
               />
              </a>
-            <p style={{ fontWeight: "600", color: "rgb(228, 231, 235)" }}>OR</p>
+            <p id="or">OR</p>
             <a
               href="https://play.google.com/store/apps/details?id=com.practicalearning.minidoroclock"
               target="_blank"
