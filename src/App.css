@@ -216,6 +216,7 @@ html {
 }
 
 #or  {
+  font-size: 2rem;
   position: relative;
   left: -2rem;
 }
@@ -257,7 +258,7 @@ html {
     width: 300px;
   }
   #or {
-    position: relative;
-    left: 0.4 rem;
+    margin-left: 4rem;
+    font-size: inherit;
   }
 }
