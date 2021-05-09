@@ -214,6 +214,11 @@ html {
   width: 70%;
   height: auto;
 }
+
+#or  {
+  position: relative;
+  left: -2rem;
+}
 @media only screen and (max-width: 800px) {
   .intro {
     width: 100%;
@@ -250,5 +255,9 @@ html {
   }
   .study {
     width: 300px;
+  }
+  #or {
+    position: relative;
+    left: 0.4 rem;
   }
 }
