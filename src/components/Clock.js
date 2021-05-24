@@ -54,7 +54,7 @@ export default class Clock extends React.Component {
   };
 
   handleIncrementBreak = () => {
-    if (this.state.break < 30) {
+    if (this.state.break < 60 * 15) {
       this.setState((prevState) => ({
         break: prevState.break + 60,
         breakLength: prevState.breakLength + 1,
