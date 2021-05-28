@@ -26,7 +26,7 @@ export default function ModalRules() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
+    
   }
 
   function closeModal() {
